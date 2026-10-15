@@ -1,59 +1,32 @@
-# GIUYearbook
+﻿# GIU Yearbook - Assignment 1
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.0.
+An Angular yearbook directory with eight reusable student cards. This completes the student-card lab; the staff, gallery, login and student-story placeholder pages are intentional starter features outside Lab 1.
 
-## Development server
+## Run
 
-To start a local development server, run:
+Use Node.js 24.15 or newer supported by Angular 22 (Node 22.22.3+ also works).
 
-```bash
-ng serve
+```sh
+npm ci
+npm start
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open http://localhost:4200. Google Fonts supplies Inter and Lora; the existing system/Georgia fallbacks apply offline.
 
-## Code scaffolding
+## Validate
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```sh
+npm run build -- --configuration development
+npm run build
+npm test -- --watch=false
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Implementation
 
-```bash
-ng generate --help
-```
+- `src/app/components/student-card/`: required `Student` signal input, template, token-based scoped CSS and behavioral tests.
+- `src/app/pages/students-page/`: passes each filtered student into the card; retains name search, faculty filters and featured/alphabetical sorting.
+- Each whole card links to `/students/:id` using Angular RouterLink and an accessible label. Portraits load lazily and use the existing placeholder on error.
+- Cards use the specified 310:246 cropped portrait, 20px body padding, 12px gaps, name/meta/quote typography and red arrow. Hover lifts the card, keyboard focus uses the global red outline, and reduced-motion preferences disable movement.
+- The starter's missing staff model and parameterized SSR route configuration are repaired so builds can succeed.
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+See [assignment answers](docs/assignment-answers.md) for the written questions and [completion checklist](docs/assignment-checklist.md) for coverage and submission steps.
